@@ -12,3 +12,7 @@ podman rm -f openvpn-as
 pomdan exec openvpn 'sacli --user "openvpn" --new_pass "R00tu53r" SetLocalPassword'
 
 
+pomdan exec openvpn 'sacli --key "admin_ui.https.port" --value "944" ConfigPut' 
+pomdan exec openvpn 'sacli --key "cs.https.port" --value "944" ConfigPut' 
+pomdan exec openvpn 'sacli --key "vpn.daemon.0.listen.port" --value "4344" ConfigPut' 
+pomdan exec openvpn 'sacli --key "vpn.server.daemon.tcp.port" --value "4344" ConfigPut' 
