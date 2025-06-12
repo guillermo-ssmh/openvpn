@@ -4,6 +4,7 @@ docker run -d \
   -p 944:943 -p 4344:443 -p 1195:1194/udp \
   -v /opt/openvpn/data:/openvpn \
   --restart=unless-stopped \
+  --hostname=openvpn-system01.local \
   openvpn/openvpn-as
 
 podman rm -f openvpn-as 
