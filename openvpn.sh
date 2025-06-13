@@ -1,9 +1,7 @@
 #!/bin/bash
 
-podman ps openvpn-as
-
+podman ps -a
 podman rm -f openvpn-as 
-
 podman run -d \
   --name=openvpn-as --device /dev/net/tun \
   --cap-add=MKNOD --cap-add=NET_ADMIN \
@@ -12,7 +10,9 @@ podman run -d \
   --restart=unless-stopped \
   --hostname=gssmh.ddns.net \
   openvpn/openvpn-as
-  
+
+sleep 3
+
 podman exec openvpn-as /usr/sbin/sacli --user "openvpn" --new_pass "R00tu53r"   SetLocalPassword
 podman exec openvpn-as /usr/sbin/sacli --key "admin_ui.https.port"      --value "944"  ConfigPut
 podman exec openvpn-as /usr/sbin/sacli --key "cs.https.port"            --value "944"  ConfigPut
@@ -22,5 +22,5 @@ podman exec openvpn-as /usr/sbin/sacli --key "vpn.daemon.1.listen.port" --value 
 podman exec openvpn-as /usr/sbin/sacli --key "vpn.daemon.1.proto"       --value "tcp"  ConfigPut
 podman exec openvpn-as /usr/sbin/sacli start
 
-podman ps openvpn-as
+podman ps -l
 exit 0
