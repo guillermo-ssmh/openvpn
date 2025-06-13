@@ -11,11 +11,11 @@ podman run -d \
   --hostname=gssmh.ddns.net \
   openvpn/openvpn-as
   
-pomdan exec openvpn 'sacli --user "openvpn" --new_pass "R00tu53r" SetLocalPassword'
-pomdan exec openvpn 'sacli --key "admin_ui.https.port" --value "944" ConfigPut' 
-pomdan exec openvpn 'sacli --key "cs.https.port" --value "944" ConfigPut' 
-pomdan exec openvpn 'sacli --key "vpn.daemon.0.listen.port" --value "1195 ConfigPut' 
-pomdan exec openvpn 'sacli --key "vpn.daemon.0.proto"       --value "udp" ConfigPut' 
-pomdan exec openvpn 'sacli --key "vpn.daemon.1.listen.port" --value "4344 ConfigPut' 
-pomdan exec openvpn 'sacli --key "vpn.daemon.1.proto"       --value "tcp" ConfigPut' 
-pomdan exec openvpn 'sacli start' 
+podman exec openvpn 'sacli --user "openvpn" --new_pass "R00tu53r" SetLocalPassword'
+podman exec openvpn 'sacli --key "admin_ui.https.port" --value "944" ConfigPut' 
+podman exec openvpn 'sacli --key "cs.https.port" --value "944" ConfigPut' 
+podman exec openvpn 'sacli --key "vpn.daemon.0.listen.port" --value "1195 ConfigPut' 
+podman exec openvpn 'sacli --key "vpn.daemon.0.proto"       --value "udp" ConfigPut' 
+podman exec openvpn 'sacli --key "vpn.daemon.1.listen.port" --value "4344 ConfigPut' 
+podman exec openvpn 'sacli --key "vpn.daemon.1.proto"       --value "tcp" ConfigPut' 
+podman exec openvpn 'sacli start' 
