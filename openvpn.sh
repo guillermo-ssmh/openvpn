@@ -24,5 +24,7 @@ podman exec openvpn-as /usr/sbin/sacli --key "vpn.daemon.1.listen.port"   --valu
 podman exec openvpn-as /usr/sbin/sacli --key "vpn.daemon.1.proto"         --value "tcp"  ConfigPut
 podman exec openvpn-as /usr/sbin/sacli start
 
+podman exec openvpn-as /usr/sbin/sacli ConfigQuery > openvpn-as.config.json
+
 podman ps -l
 exit 0
