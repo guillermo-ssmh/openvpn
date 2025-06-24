@@ -1,7 +1,11 @@
 #!/bin/bash
 
 podman ps -a
-podman rm -f openvpn-as 
+
+podman stop openvpn-as
+
+podman rm openvpn-as
+
 podman run -d \
   --name=openvpn-as --device /dev/net/tun \
   --cap-add=MKNOD --cap-add=NET_ADMIN \
@@ -25,4 +29,12 @@ podman exec openvpn-as /usr/sbin/sacli --key "vpn.daemon.1.proto"         --valu
 podman exec openvpn-as /usr/sbin/sacli start
 
 podman ps -l
+
+sudo firewall-cmd --permanent --add-port=944/tcp
+sudo firewall-cmd --permanent --add-port=4334/tcp
+sudo firewall-cmd --permanent --add-port=1195/udp
+
+sudo firewall-cmd --reload
+sudo firewall-cmd --list-all
+
 exit 0
