@@ -1,11 +1,12 @@
 #!/bin/bash
 
-podman ps -a
-
+echo "Stopping openvpn-as"
 podman stop openvpn-as
 
+echo "Dropping openvpn-as"
 podman rm openvpn-as
 
+echo "Creating openvpn-as"
 podman run -d \
   --name=openvpn-as --device /dev/net/tun \
   --cap-add=MKNOD --cap-add=NET_ADMIN \
@@ -17,6 +18,7 @@ podman run -d \
 
 sleep 3
 
+echo "Setup openvpn-as"
 podman exec openvpn-as /usr/sbin/sacli --user "openvpn" --new_pass "R00tu53r"   SetLocalPassword
 podman exec openvpn-as /usr/sbin/sacli --key "admin_ui.https.port"        --value "944"  ConfigPut
 podman exec openvpn-as /usr/sbin/sacli --key "cs.https.port"              --value "944"  ConfigPut
@@ -28,13 +30,17 @@ podman exec openvpn-as /usr/sbin/sacli --key "vpn.daemon.1.listen.port"   --valu
 podman exec openvpn-as /usr/sbin/sacli --key "vpn.daemon.1.proto"         --value "tcp"  ConfigPut
 podman exec openvpn-as /usr/sbin/sacli start
 
-podman ps -l
+echo "Status of openvpn-as"
+podman ps openvpn-as
 
+echo "Setup firewalld"
 sudo firewall-cmd --permanent --add-port=944/tcp
 sudo firewall-cmd --permanent --add-port=4334/tcp
 sudo firewall-cmd --permanent --add-port=1195/udp
 
 sudo firewall-cmd --reload
+
+echo "Status of firewalld"
 sudo firewall-cmd --list-all
 
 exit 0
