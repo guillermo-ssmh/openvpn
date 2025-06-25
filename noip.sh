@@ -14,4 +14,6 @@ sleep 1
 echo "Checking...."
 podman inspect --format '{{.State.Status}}' noip 
 
+podman logs noip
+
 exit 0
