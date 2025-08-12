@@ -1,0 +1,23 @@
+{
+  "admin_ui.https.ip_address": "all",
+  "admin_ui.https.port": "943",
+  "auth.local.0.enable": "true",
+  "auth.module.type": "local",
+  "auth.sessiontoken.secretkey": "-----BEGIN OpenVPN Access Server session auth key-----\nl+5JHE/Ym9Yo5Kqgw6lj+Nx4YwZZ+CCWb/0MI3tLJqQV5Y4chNsTa0ZvNoPgrIex\nCXFpYiMEeavkfRJwTdEForzyLsxSXjjk6eqYHILVYaDbsIonRDMl5EFs/s2Gdnbv\nqB7ck5TnkXdIvWud+gg+lgqEld4/C0nPvtmkJId4odzy0RMqi+FK/4Bl5TBgXFZu\nA3qeUVDiM7xpxOMrJF6cms8soj4q/vB7IETK3B1oK6jiN/tUTaqFyq6T3KtNao8b\nnTjkcPVbtjVymFQ8RSL7lJc4Dv7/5p7gzbnuzXco5ZPUk3bDRMTR6Qo4rci9F7TS\njAsAbhUaXnY6k7zreE1mwA==\n-----END OpenVPN Access Server session auth key-----\n",
+  "cs.https.ip_address": "all",
+  "cs.https.port": "943",
+  "host.name": "10.88.0.2",
+  "upgrade.current_version": "2.14.3",
+  "upgrade.initial_version": "2.14.3",
+  "vpn.client.routing.reroute_dns": "true",
+  "vpn.client.routing.reroute_gw": "true",
+  "vpn.daemon.0.listen.ip_address": "all",
+  "vpn.daemon.0.listen.port": "443",
+  "vpn.daemon.0.server.ip_address": "all",
+  "vpn.server.daemon.tcp.n_daemons": "4",
+  "vpn.server.daemon.tcp.port": "443",
+  "vpn.server.daemon.udp.n_daemons": "4",
+  "vpn.server.routing.private_access": "nat",
+  "vpn.server.routing.private_network.0": "10.88.0.0/16",
+  "vpn.server.tls_cc_security": "tls-crypt"
+}
